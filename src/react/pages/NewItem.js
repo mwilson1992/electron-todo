@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     IonBackButton,
     IonButtons,
@@ -7,7 +8,6 @@ import {
     IonTitle,
     IonToolbar
   } from '@ionic/react';
-  import React from 'react';
   
   class NewItem extends React.Component {
     render() {
@@ -16,7 +16,7 @@ import {
           <IonHeader>
             <IonToolbar>
               <IonButtons slot="start">
-                <IonBackButton defaultHref="/home" />
+                <IonBackButton defaultHref="/taskList" />
               </IonButtons>
               <IonTitle>New Item</IonTitle>
             </IonToolbar>

@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { channels } from '../shared/constants';
-import Home from './pages/Home';
-import NewItem from './pages/NewItem';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
+import { channels } from '../shared/constants';
+import TaskList from './pages/TaskList';
+import NewItem from './pages/NewItem';
+import logo from './logo.svg';
+import './App.css';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -53,9 +53,9 @@ class App extends React.Component {
         </header>
         <IonReactRouter>
           <IonRouterOutlet>
-            <Route path="/home" component={Home} exact={true} />
+            <Route path="/taskList" component={TaskList} exact={true} />
             <Route path="/new" component={NewItem} />
-            <Route exact path="/" render={() => <Redirect to="/home" />} />
+            <Route exact path="/" render={() => <Redirect to="/taskList" />} />
           </IonRouterOutlet>
         </IonReactRouter>
       </IonApp>
