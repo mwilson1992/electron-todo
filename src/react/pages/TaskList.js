@@ -16,6 +16,25 @@ import './TaskList.css';
 
 class TaskList extends React.Component {
   render() {
+    let data = [
+      {
+        "name" : "Test Task",
+        "description" : "this is a test",
+        "daysLeft" : "5 Days"
+      },
+      {
+        "name" : "Test Task2",
+        "description" : "yep",
+        "daysLeft" : "2 Days"
+      }
+    ];
+
+    let tasks = data.map((task) => 
+      <Task name={task.name} description={task.description} daysLeft={task.daysLeft}/>
+    );
+
+    tasks.push(<Task name="test" description="desc" daysLeft="1 Day"/>)
+
     return (
       <IonPage>
         <IonHeader>
@@ -25,8 +44,7 @@ class TaskList extends React.Component {
         </IonHeader>
         <IonContent>
           <IonList>
-            <Task name="Test Task" description="this is a test" daysLeft="5 Days"/>
-            <Task name="Test Task2" description="yep" daysLeft="2 Days"/>
+            { tasks }
           </IonList>
 
           <IonFab vertical="bottom" horizontal="end" slot="fixed">

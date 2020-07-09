@@ -4,7 +4,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import { channels } from '../shared/constants';
 import TaskList from './pages/TaskList';
-import NewItem from './pages/NewItem';
+import NewTask from './pages/NewTask';
 import logo from './logo.svg';
 import './App.css';
 
@@ -54,7 +54,7 @@ class App extends React.Component {
         <IonReactRouter>
           <IonRouterOutlet>
             <Route path="/taskList" component={TaskList} exact={true} />
-            <Route path="/new" component={NewItem} />
+            <Route path="/new" component={NewTask} />
             <Route exact path="/" render={() => <Redirect to="/taskList" />} />
           </IonRouterOutlet>
         </IonReactRouter>
