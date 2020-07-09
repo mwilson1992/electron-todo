@@ -19,11 +19,11 @@
     "@types/react-router": "^5.1.4",
     "@types/react-router-dom": "^5.1.3",
     "ionicons": "^5.0.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "export BROWSER=none && react-scripts start",
@@ -32,7 +32,8 @@
     "eject": "react-scripts eject",
     "start-electron": "export ELECTRON_START_URL=http://localhost:3000 && electron .",
     "build-electron": "mkdir build/src && cp -r electron/. build/electron && cp -r src/shared/. build/src/shared",
-    "package": "electron-builder build --linux --win -c.extraMetadata.main=build/electron/main.js --publish never"
+    "package": "electron-builder build --linux --win -c.extraMetadata.main=build/electron/main.js --publish never",
+    "package-mac": "electron-builder build --mac --win -c.extraMetadata.main=build/electron/main.js --publish never"
   },
   "eslintConfig": {
     "extends": "react-app"
