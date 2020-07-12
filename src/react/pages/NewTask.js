@@ -12,7 +12,8 @@ import {
     IonInput,
     IonList,
     IonButton,
-    IonFooter
+    IonFooter,
+    IonDatetime
   } from '@ionic/react';
   
   class NewTask extends React.Component {
@@ -39,9 +40,9 @@ import {
                 <IonInput value="" placeholder="Enter Input" clearInput></IonInput>
               </IonItem>
 
-              <IonItemDivider>Days Left</IonItemDivider>
+              <IonItemDivider>Due Date</IonItemDivider>
               <IonItem>
-                <IonInput value="" placeholder="Enter Input" clearInput></IonInput>
+                <IonDatetime displayFormat="MM/DD/YYYY" placeholder="Select Date" max="2120-12-09"></IonDatetime>
               </IonItem>
             </IonList>
           </IonContent>

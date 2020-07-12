@@ -9,6 +9,11 @@ import {
 
 class Task extends React.Component {
   render() {
+    let color = "success";
+    if(this.props.daysLeft === "Expired") {
+        color = "danger";
+    }
+
     return (
         <IonItem>
             <IonCheckbox slot="start" />
@@ -16,7 +21,7 @@ class Task extends React.Component {
                 <h1>{this.props.name}</h1>
                 <IonNote>{this.props.description}</IonNote>
             </IonLabel>
-            <IonBadge color="success" slot="end">
+            <IonBadge color={color} slot="end">
                 {this.props.daysLeft}
             </IonBadge>
         </IonItem>

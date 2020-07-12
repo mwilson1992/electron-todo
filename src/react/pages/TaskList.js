@@ -46,12 +46,17 @@ class TaskList extends React.Component {
       {
         "name" : "Test Task",
         "description" : "this is a test",
-        "daysLeft" : "5 Days"
+        "daysLeft" : "2020-08-17T03:24:00"
       },
       {
         "name" : "Test Task2",
         "description" : "yep",
-        "daysLeft" : "2 Days"
+        "daysLeft" : "2020-08-20T03:24:00"
+      },
+      {
+        "name" : "expired Task2",
+        "description" : "oh no",
+        "daysLeft" : "2019-08-20T03:24:00"
       }
     ];
 
@@ -59,6 +64,16 @@ class TaskList extends React.Component {
       isLoaded: true,
       tasks: data
     });
+  }
+
+  calculateDaysLeft(date) {
+    let now = new Date();
+    let dueDate = new Date(date);
+    let difference = dueDate.getTime() - now.getTime(); 
+    if(difference > 0) {
+      return Math.floor(difference / (1000 * 3600 * 24)) + " Days Left"; 
+    }
+    return "Expired";
   }
 
   render() {
@@ -81,7 +96,7 @@ class TaskList extends React.Component {
                   <Task 
                     name={task.name} 
                     description={task.description} 
-                    daysLeft={task.daysLeft}/>)}
+                    daysLeft={this.calculateDaysLeft(task.daysLeft)}/>)}
             </IonList>
 
             <IonFab vertical="bottom" horizontal="end" slot="fixed">
