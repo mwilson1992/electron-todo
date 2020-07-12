@@ -15,7 +15,33 @@ import Task from '../components/Task';
 import './TaskList.css';
 
 class TaskList extends React.Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      tasks: []
+    };
+  }
+
+  componentDidMount() {
+    // fetch("https://api.example.com/tasks")
+    //   .then(res => res.json())
+    //   .then(
+    //     (result) => {
+    //       this.setState({
+    //         isLoaded: true,
+    //         tasks: result.tasks
+    //       });
+    //     },
+    //     (error) => {
+    //       this.setState({
+    //         isLoaded: true,
+    //         error
+    //       });
+    //     }
+    //   )
+
     let data = [
       {
         "name" : "Test Task",
@@ -29,32 +55,44 @@ class TaskList extends React.Component {
       }
     ];
 
-    let tasks = data.map((task) => 
-      <Task name={task.name} description={task.description} daysLeft={task.daysLeft}/>
-    );
+    this.setState({
+      isLoaded: true,
+      tasks: data
+    });
+  }
 
-    tasks.push(<Task name="test" description="desc" daysLeft="1 Day"/>)
+  render() {
+    const { error, isLoaded, tasks } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <IonPage>
+          <IonHeader>
+            <IonToolbar>
+              <IonTitle>First Task List</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent>
+            <IonList>
+              { tasks.map((task) => 
+                  <Task 
+                    name={task.name} 
+                    description={task.description} 
+                    daysLeft={task.daysLeft}/>)}
+            </IonList>
 
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>First Task List</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <IonList>
-            { tasks }
-          </IonList>
-
-          <IonFab vertical="bottom" horizontal="end" slot="fixed">
-            <IonFabButton onClick={() => this.props.history.push('/new')} >
-              <IonIcon icon={add} />
-            </IonFabButton>
-          </IonFab>
-        </IonContent>
-      </IonPage>
-    );
+            <IonFab vertical="bottom" horizontal="end" slot="fixed">
+              <IonFabButton onClick={() => this.props.history.push('/new')} >
+                <IonIcon icon={add} />
+              </IonFabButton>
+            </IonFab>
+          </IonContent>
+        </IonPage>
+      );
+    };
   };
 };
 
