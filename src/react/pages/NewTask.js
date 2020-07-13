@@ -17,6 +17,47 @@ import {
   } from '@ionic/react';
   
   class NewTask extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: '',
+        description: '',
+        dueDate: ''
+      };
+
+      this.handleNameChange = this.handleNameChange.bind(this);
+      this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+      this.handleDueDateChange = this.handleDueDateChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleNameChange(event) {    
+      this.setState({
+        name: event.target.value
+      }); 
+    }
+
+    handleDescriptionChange(event) {    
+      this.setState({
+        description: event.target.value
+      }); 
+    }
+
+    handleDueDateChange(event) {    
+      this.setState({
+        dueDate: event.target.value
+      }); 
+    }
+
+    handleSubmit(event) {
+      event.preventDefault();
+      console.log("name: " + this.state.name);
+      console.log("description: " + this.state.description);
+      console.log("dueDate: " + this.state.dueDate);
+      //save
+      this.props.history.goBack()
+    }
+
     render() {
       return (
         <IonPage>
@@ -32,24 +73,24 @@ import {
             <IonList>
               <IonItemDivider>Name:</IonItemDivider>
               <IonItem>
-                <IonInput value="" placeholder="Enter Input"></IonInput>
+                <IonInput placeholder="Enter Input" clearInput value={this.state.name} onInput={this.handleNameChange}></IonInput>
               </IonItem>
 
               <IonItemDivider>Description:</IonItemDivider>
               <IonItem>
-                <IonInput value="" placeholder="Enter Input" clearInput></IonInput>
+                <IonInput placeholder="Enter Input" clearInput value={this.state.description} onInput={this.handleDescriptionChange}></IonInput>
               </IonItem>
 
               <IonItemDivider>Due Date</IonItemDivider>
               <IonItem>
-                <IonDatetime displayFormat="MM/DD/YYYY" placeholder="Select Date" max="2120-12-09"></IonDatetime>
+                <IonDatetime displayFormat="MM/DD/YYYY" placeholder="Select Date" max="2012-12-09" value={this.state.dueDate} onIonChange={this.handleDueDateChange}></IonDatetime>
               </IonItem>
             </IonList>
           </IonContent>
 
           <IonFooter>
             <IonToolbar>
-              <IonButton expand="block" type="submit" class="ion-no-margin">Create task</IonButton>
+              <IonButton expand="block" type="submit" class="ion-no-margin" onClick={this.handleSubmit}>Create task</IonButton>
             </IonToolbar>
           </IonFooter>
         </IonPage>

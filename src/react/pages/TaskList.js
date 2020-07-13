@@ -62,7 +62,11 @@ class TaskList extends React.Component {
 
     this.setState({
       isLoaded: true,
-      tasks: data
+      tasks: data.map((task) => 
+      <Task 
+        name={task.name} 
+        description={task.description} 
+        daysLeft={this.calculateDaysLeft(task.daysLeft)}/>)
     });
   }
 
@@ -92,11 +96,7 @@ class TaskList extends React.Component {
           </IonHeader>
           <IonContent>
             <IonList>
-              { tasks.map((task) => 
-                  <Task 
-                    name={task.name} 
-                    description={task.description} 
-                    daysLeft={this.calculateDaysLeft(task.daysLeft)}/>)}
+              { tasks }
             </IonList>
 
             <IonFab vertical="bottom" horizontal="end" slot="fixed">
