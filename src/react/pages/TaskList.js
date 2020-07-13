@@ -64,6 +64,7 @@ class TaskList extends React.Component {
       isLoaded: true,
       tasks: data.map((task) => 
       <Task 
+        key={task.name}
         name={task.name} 
         description={task.description} 
         daysLeft={this.calculateDaysLeft(task.daysLeft)}/>)

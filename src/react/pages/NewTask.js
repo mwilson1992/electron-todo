@@ -73,12 +73,12 @@ import {
             <IonList>
               <IonItemDivider>Name:</IonItemDivider>
               <IonItem>
-                <IonInput placeholder="Enter Input" clearInput value={this.state.name} onInput={this.handleNameChange}></IonInput>
+                <IonInput placeholder="Enter Input" clearInput value={this.state.name} onIonChange={this.handleNameChange}></IonInput>
               </IonItem>
 
               <IonItemDivider>Description:</IonItemDivider>
               <IonItem>
-                <IonInput placeholder="Enter Input" clearInput value={this.state.description} onInput={this.handleDescriptionChange}></IonInput>
+                <IonInput placeholder="Enter Input" clearInput value={this.state.description} onIonChange={this.handleDescriptionChange}></IonInput>
               </IonItem>
 
               <IonItemDivider>Due Date</IonItemDivider>
