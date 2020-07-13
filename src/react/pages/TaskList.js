@@ -54,7 +54,7 @@ class TaskList extends React.Component {
         "daysLeft" : "2020-08-20T03:24:00"
       },
       {
-        "name" : "expired Task2",
+        "name" : "expired Task3",
         "description" : "oh no",
         "daysLeft" : "2019-08-20T03:24:00"
       }
